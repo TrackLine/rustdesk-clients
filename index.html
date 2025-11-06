@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>RustDesk — скачивание клиентов</title>
+  <meta name="description" content="Сборки RustDesk, преднастроенные на rd.shalenkov.dev" />
+  <meta name="color-scheme" content="dark light" />
+  <style>
+    :root{
+      --bg:#0b0f14; --card:#111827; --muted:#94a3b8; --text:#e5e7eb; --brand:#22c55e; --brand-2:#16a34a;
+      --border:#1f2937; --link:#60a5fa; --warn:#f59e0b;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{margin:0;font:16px/1.5 system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, "Noto Sans", "Helvetica Neue", Arial, "Apple Color Emoji", "Segoe UI Emoji"; background:var(--bg); color:var(--text)}
+    a{color:var(--link);text-decoration:none}
+    a:hover{text-decoration:underline}
+    .container{max-width:980px;margin:0 auto;padding:24px}
+    .hero{display:grid;gap:12px;margin:24px 0 16px}
+    .title{font-size:clamp(26px,4vw,40px);font-weight:800}
+    .subtitle{color:var(--muted)}
+    .card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:16px}
+    .grid{display:grid;gap:16px}
+    @media(min-width:740px){.grid{grid-template-columns:1fr 1fr}}
+    .btn{display:inline-flex;align-items:center;gap:10px;padding:12px 16px;border-radius:12px;border:1px solid var(--border);background:#0f172a;color:var(--text);font-weight:600}
+    .btn:hover{border-color:#334155;transform:translateY(-1px)}
+    .btn.primary{background:linear-gradient(180deg,var(--brand),var(--brand-2));color:#04110a}
+    .btn.small{padding:8px 12px;font-weight:600}
+    .muted{color:var(--muted)}
+    .tag{font-size:12px;padding:2px 8px;border-radius:999px;border:1px solid var(--border);color:var(--muted)}
+    .row{display:flex;gap:12px;flex-wrap:wrap}
+    .file{display:flex;align-items:center;gap:10px}
+    .file b{font-weight:700}
+    .kbd{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;background:#0b1220;border:1px solid var(--border);padding:2px 6px;border-radius:6px}
+    .foot{margin-top:32px;color:var(--muted);font-size:14px}
+    .callout{border-left:3px solid var(--warn);padding:8px 12px;background:#11140a;border-radius:8px}
+    .hidden{display:none}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header class="hero">
+      <div class="title">RustDesk — преднастроенные клиенты</div>
+      <div class="subtitle">Сборки указывают на <b>rd.shalenkov.dev</b> (ID: <span class="kbd">21116</span>, Relay: <span class="kbd">21117</span>). Ключ прописан в клиентах.
+      </div>
+      <div class="row">
+        <span class="tag" id="os-tip">Определяем вашу ОС…</span>
+        <a class="btn small" href="#install">Как установить</a>
+        <a class="btn small" href="#checksums">Проверка SHA256</a>
+      </div>
+    </header>
+
+    <section class="grid">
+      <!-- Windows -->
+      <div class="card" id="win-card">
+        <h2>Windows</h2>
+        <p class="muted">Windows 10/11. Portable и Installer.</p>
+        <div class="row">
+          <a class="btn primary" id="win-main" href="downloads/windows/RustDesk-setup-x64.exe" download>Скачать Installer (x64)</a>
+          <a class="btn" href="downloads/windows/RustDesk-portable-x64.zip" download>Portable (x64)</a>
+        </div>
+        <p class="muted">ARM64: <a href="downloads/windows/RustDesk-setup-arm64.exe" download>Installer</a></p>
+      </div>
+
+      <!-- macOS -->
+      <div class="card" id="mac-card">
+        <h2>macOS</h2>
+        <p class="muted">macOS 12+ (Monterey и новее). Отдельные сборки для Intel и Apple Silicon.</p>
+        <div class="row">
+          <a class="btn primary" id="mac-main" href="downloads/macos/RustDesk-macos-universal.dmg" download>Скачать (Universal)</a>
+          <a class="btn" href="downloads/macos/RustDesk-macos-arm64.dmg" download>Apple Silicon</a>
+          <a class="btn" href="downloads/macos/RustDesk-macos-x64.dmg" download>Intel</a>
+        </div>
+      </div>
+
+      <!-- Android -->
+      <div class="card" id="android-card">
+        <h2>Android</h2>
+        <p class="muted">APK с преднастроенными серверами (возможно потребуется разрешить установку из неизвестных источников).</p>
+        <div class="row">
+          <a class="btn primary" id="android-main" href="downloads/android/RustDesk-android-arm64.apk" download>Скачать APK</a>
+          <a class="btn" href="downloads/android/" target="_blank">Папка с APK</a>
+        </div>
+      </div>
+
+      <!-- Дополнительно -->
+      <div class="card" id="extras-card">
+        <h2>Дополнительно</h2>
+        <ul>
+          <li>Инструкция для <b>беззвучной установки</b> Windows MSI/EXE — см. README в репозитории.</li>
+          <li>Автообновление можно делать через PR в этот репозиторий: обновляете файлы в <span class="kbd">downloads/</span> и <span class="kbd">checksums.json</span>.</li>
+          <li>Ссылки используют относительные пути, чтобы всё работало и в форках.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="card" id="checksums" style="margin-top:16px">
+      <h2>Проверка целостности (SHA256)</h2>
+      <p class="muted">Файл <span class="kbd">checksums.json</span> лежит в корне репозитория и подтягивается автоматически.</p>
+      <div id="sum-list" class="grid"></div>
+      <div id="sum-empty" class="muted">Файл checksums.json не найден. Добавьте его в корень репозитория.</div>
+    </section>
+
+    <section class="card" id="install" style="margin-top:16px">
+      <h2>Как установить и подключиться</h2>
+      <ol>
+        <li>Скачайте клиент для вашей платформы.</li>
+        <li>Установите/распакуйте и запустите.</li>
+        <li>Если требуется, в настройках клиента откройте <b>Network → ID/Relay server</b> и убедитесь, что указано:<br>
+          <span class="kbd">ID: rd.shalenkov.dev:21116</span>, <span class="kbd">Relay: rd.shalenkov.dev:21117</span>.</li>
+      </ol>
+      <div class="callout">
+        Публичный ключ сервера уже вшит в эти сборки. При «key mismatch» убедитесь, что используете актуальную версию.
+      </div>
+    </section>
+
+    <footer class="foot">
+      Хостится на GitHub Pages • © <span id="year"></span> • Репозиторий: <a href="./">this repo</a>
+    </footer>
+  </div>
+
+  <script>
+    // Автовыделение карточки по ОС
+    (function(){
+      const ua = navigator.userAgent.toLowerCase();
+      const isWin = ua.includes('windows');
+      const isMac = ua.includes('mac os');
+      const isAndroid = ua.includes('android');
+      const tip = document.getElementById('os-tip');
+      if(isWin){ tip.textContent = 'Определено: Windows'; document.getElementById('win-card').scrollIntoView({behavior:'smooth',block:'center'}); }
+      else if(isMac){ tip.textContent = 'Определено: macOS'; document.getElementById('mac-card').scrollIntoView({behavior:'smooth',block:'center'}); }
+      else if(isAndroid){ tip.textContent = 'Определено: Android'; document.getElementById('android-card').scrollIntoView({behavior:'smooth',block:'center'}); }
+      else { tip.textContent = 'Определено: другая ОС'; }
+    })();
+
+    // Подгружаем checksums.json из корня репозитория (если он существует)
+    (async function(){
+      try{
+        const res = await fetch('./checksums.json', {cache:'no-store'});
+        if(!res.ok) throw new Error('no checksums');
+        const data = await res.json();
+        const grid = document.getElementById('sum-list');
+        document.getElementById('sum-empty').classList.add('hidden');
+        const entries = Object.entries(data); // { path: sha256 }
+        if(!entries.length){ document.getElementById('sum-empty').classList.remove('hidden'); return; }
+        for(const [path, sha] of entries){
+          const card = document.createElement('div');
+          card.className='card';
+          card.innerHTML = `<div class="file"><b>${path}</b></div><div class="muted">SHA256: <span class="kbd">${sha}</span></div>`;
+          grid.appendChild(card);
+        }
+      }catch(e){ /* нет файла — оставим заглушку */ }
+    })();
+
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
