@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>RustDesk — скачивание клиентов</title>
-  <meta name="description" content="Сборки RustDesk, преднастроенные на rd.shalenkov.dev" />
+  <title>RustDesk — скачивание клиентов by Shalenkov.dev</title>
+  <meta name="description" content="Сборки RustDesk by shalenkov.dev для Windows, macOS и Android" />
   <meta name="color-scheme" content="dark light" />
   <style>
     :root{
@@ -42,12 +42,11 @@
   <div class="container">
     <header class="hero">
       <div class="title">RustDesk — преднастроенные клиенты</div>
-      <div class="subtitle">Сборки указывают на <b>rd.shalenkov.dev</b> (ID: <span class="kbd">21116</span>, Relay: <span class="kbd">21117</span>). Ключ прописан в клиентах.
+      <div class="subtitle">Сборки RustDesk by shalenkov.dev для Windows, macOS и Android
       </div>
       <div class="row">
         <span class="tag" id="os-tip">Определяем вашу ОС…</span>
         <a class="btn small" href="#install">Как установить</a>
-        <a class="btn small" href="#checksums">Проверка SHA256</a>
       </div>
     </header>
 
@@ -84,39 +83,16 @@
         </div>
       </div>
 
-      <!-- Дополнительно -->
-      <div class="card" id="extras-card">
-        <h2>Дополнительно</h2>
-        <ul>
-          <li>Инструкция для <b>беззвучной установки</b> Windows MSI/EXE — см. README в репозитории.</li>
-          <li>Автообновление можно делать через PR в этот репозиторий: обновляете файлы в <span class="kbd">downloads/</span> и <span class="kbd">checksums.json</span>.</li>
-          <li>Ссылки используют относительные пути, чтобы всё работало и в форках.</li>
-        </ul>
-      </div>
-    </section>
-
-    <section class="card" id="checksums" style="margin-top:16px">
-      <h2>Проверка целостности (SHA256)</h2>
-      <p class="muted">Файл <span class="kbd">checksums.json</span> лежит в корне репозитория и подтягивается автоматически.</p>
-      <div id="sum-list" class="grid"></div>
-      <div id="sum-empty" class="muted">Файл checksums.json не найден. Добавьте его в корень репозитория.</div>
-    </section>
-
     <section class="card" id="install" style="margin-top:16px">
       <h2>Как установить и подключиться</h2>
       <ol>
         <li>Скачайте клиент для вашей платформы.</li>
         <li>Установите/распакуйте и запустите.</li>
-        <li>Если требуется, в настройках клиента откройте <b>Network → ID/Relay server</b> и убедитесь, что указано:<br>
-          <span class="kbd">ID: rd.shalenkov.dev:21116</span>, <span class="kbd">Relay: rd.shalenkov.dev:21117</span>.</li>
       </ol>
-      <div class="callout">
-        Публичный ключ сервера уже вшит в эти сборки. При «key mismatch» убедитесь, что используете актуальную версию.
-      </div>
     </section>
 
     <footer class="foot">
-      Хостится на GitHub Pages • © <span id="year"></span> • Репозиторий: <a href="./">this repo</a>
+      Хостится на GitHub Pages • © <span id="year"></span> • by <a href="https://shalenkov.dev">Shalenkov.dev</a>
     </footer>
   </div>
 
