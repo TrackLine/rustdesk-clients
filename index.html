@@ -33,7 +33,7 @@
     .file{display:flex;align-items:center;gap:10px}
     .file b{font-weight:700}
     .kbd{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;background:#0b1220;border:1px solid var(--border);padding:2px 6px;border-radius:6px}
-    .foot{margin-top:32px;color:var(--muted);font-size:14px}
+    .foot{margin-top:32px;color:var(--muted);font-size:14px;text-align:center}
     .callout{border-left:3px solid var(--warn);padding:8px 12px;background:#11140a;border-radius:8px}
     .hidden{display:none}
   </style>
@@ -73,16 +73,17 @@
         </div>
       </div>
 
+    </section>
+
       <!-- Android -->
-      <div class="card" id="android-card">
+      <div class="card" id="android-card" style="max-width:480px;margin:0 auto;text-align:center">
         <h2>Android</h2>
         <p class="muted">APK с преднастроенными серверами (возможно потребуется разрешить установку из неизвестных источников).</p>
-        <div class="row">
+        <div class="row" style="justify-content:center">
           <a class="btn primary" id="android-main" href="downloads/android/RustDesk-android-arm64.apk" download>Скачать APK</a>
           <a class="btn" href="downloads/android/" target="_blank">Папка с APK</a>
         </div>
       </div>
-    </section>
 
     <section class="card" id="install" style="margin-top:16px">
       <h2>Как установить и подключиться</h2>
